@@ -2,7 +2,7 @@
 
 this project is used for updating Anbernic [RG35XX](https://anbernic.com/fr/products/rg35xx) powered by [GarlicOS](https://www.patreon.com/posts/76561333) with the latest version.
 
-**=> There is no warranty of operation without errors. At your own risks <=**
+**=> There is no warranty of operation without errors. At your own risks. <=**
 
 
 For launching the update, please follow these steps :

@@ -1,4 +1,4 @@
-# GarlicOS Updater
+# garlicos-updater
 
 this project is used for updating Anbernic [RG35XX](https://anbernic.com/fr/products/rg35xx) powered by [GarlicOS](https://www.patreon.com/posts/76561333) with the latest version. It also copies the `saves` dir on your computer.
 
@@ -17,8 +17,10 @@ For launching the update, please follow these steps :
 | extRomsDir | Ext SD card : `roms` mount point
 | extSaveDir | local dir where to save `saves`
 2. Insert Int SD card
-3. Launch `01_update_int.sh`
-4. unmount and eject Int SD card
-5. Insert Ext SD card
-6. Lauch `02_update_ext.sh`
-7. unmount and eject Ext SD card
+3. Mount `misc` and `roms` mount points
+4. Launch `01_update_int.sh`
+5. unmount and eject Int SD card
+6. Insert Ext SD card
+7. Mount `roms` mount point
+8. Lauch `02_update_ext.sh`
+9. unmount and eject Ext SD card

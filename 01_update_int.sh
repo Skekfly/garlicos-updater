@@ -13,4 +13,4 @@ cp -Rv roms/Roms/* $intRomsDir
 cp -Rv roms/BIOS $intRomsDir
 cp -Rv roms/CFW $intRomsDir
 
-echo "\nEnd int update. You must now unmount $intMiscDir and $intRomsDir before ejecting them."
+echo "End int update. You must now unmount $intMiscDir and $intRomsDir before ejecting them."

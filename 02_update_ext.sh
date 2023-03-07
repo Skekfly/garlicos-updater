@@ -4,11 +4,6 @@ echo "Start ext update"
 
 source ./variables.sh
 
-if ! [[ `mount | grep $extRomsDir` ]]; then
-	mount $extRomsDir
-	echo "$extRomsDir mounted"
-fi
-
 cd $workingDir
 cp -Rv roms/Roms/* $extRomsDir
 cp -Rv roms/BIOS $extRomsDir

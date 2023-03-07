@@ -10,8 +10,8 @@ For launching the update, please follow these steps :
 
 | Variable | Description |
 | --- | --- |
-| garlicOsDownloadPath | the latest download link ([here](https://www.patreon.com/posts/76561333), named `RG35XX-CopyPasteOnTopOfStock.7z`)|
-| workingDir | the local working dir |
+| garlicOsDownloadPath | latest download link ([here](https://www.patreon.com/posts/76561333), named `RG35XX-CopyPasteOnTopOfStock.7z`)|
+| workingDir | local working dir |
 | intMiscDir | Int SD card : the `misc` mount point
 | intRomsDir | Int SD card : the `roms` mount point
 | extRomsDir | Ext SD card : the `roms` mount point

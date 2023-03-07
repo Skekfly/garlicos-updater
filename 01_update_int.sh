@@ -4,15 +4,6 @@ echo "Start int update"
 
 source ./variables.sh
 
-if ! [[ `mount | grep $intMiscDir` ]]; then
-	mount $intMiscDir
-	echo "$intMiscDir mounted"
-fi
-if ! [[ `mount | grep $intRomsDir` ]]; then
-	mount $intRomsDir
-	echo "$intRomsDir mounted"
-fi
-
 mkdir -p $workingDir
 cd $workingDir
 wget -O garlicOS.7z $garlicOsDownloadPath

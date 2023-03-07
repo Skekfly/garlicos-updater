@@ -2,6 +2,8 @@
 
 this project is used for updating Anbernic [RG35XX](https://anbernic.com/fr/products/rg35xx) powered by [GarlicOS](https://www.patreon.com/posts/76561333) with the latest version.
 
+It also copies the `saves` dir on your computer.
+
 **=> There is no warranty of operation without errors. At your own risks. <=**
 
 

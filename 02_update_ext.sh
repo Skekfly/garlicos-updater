@@ -10,4 +10,4 @@ cp -Rv roms/BIOS $extRomsDir
 cp -Rv roms/CFW $extRomsDir
 cp -Rv "$extRomsDir/Saves" $extSaveDir
 
-echo "End int update. You must now unmount $extRomsDir before ejecting it."
+echo "End ext update. You must now unmount $extRomsDir before ejecting it."

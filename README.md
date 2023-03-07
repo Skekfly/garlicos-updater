@@ -1,0 +1,1 @@
+# garlicos-updater

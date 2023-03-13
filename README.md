@@ -6,7 +6,7 @@ this project is used for updating Anbernic [RG35XX](https://anbernic.com/fr/prod
 
 ## Prerequisite
 1. Enable adb on your device by creating a file named `enableADB` on the misc mount point
-2. edit `variables.sh` 
+2. edit `garlicos-updater.cfg` 
 
 | Variable             | Description                                                                                                    |
 |----------------------|----------------------------------------------------------------------------------------------------------------|
@@ -17,4 +17,4 @@ this project is used for updating Anbernic [RG35XX](https://anbernic.com/fr/prod
 ## How to
 1. power on your device
 2. connect your device on the computer
-3. Launch `update.sh`
+3. Launch `garlicos-updater.sh`

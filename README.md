@@ -16,5 +16,6 @@ this project is used for updating Anbernic [RG35XX](https://anbernic.com/fr/prod
 
 ## How to
 1. power on your device
+2. Set the latest download link in `garlicos-updater.cfg`
 2. connect your device on the computer
 3. Launch `garlicos-updater.sh`

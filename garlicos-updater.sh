@@ -15,6 +15,9 @@ wget -O garlicOS.7z "$garlicOsDownloadPath" || exit
 echo "# Updating misc"
 adb -s "$adbDeviceId" shell cp -Rv misc/* /misc/ || exit
 
+echo "# Updating cfw"
+adb -s "$adbDeviceId" push roms/CFW /mnt/mmc/ || exit
+
 echo "# Updating roms (int)"
 adb -s "$adbDeviceId" push roms/Roms/* /mnt/mmc/ || exit
 echo "# Updating roms (ext)"
@@ -24,9 +27,6 @@ echo "# Updating bios (int)"
 adb -s "$adbDeviceId" push roms/BIOS /mnt/mmc/ || exit
 echo "# Updating bios (ext)"
 adb -s "$adbDeviceId" push roms/BIOS /mnt/SDCARD/ || exit
-
-echo "# Updating cfw"
-adb -s "$adbDeviceId" push roms/CFW /mnt/mmc/ || exit
 
 echo "# Saving saves (int)"
 adb -s "$adbDeviceId" pull /mnt/SDCARD/Saves "$extSaveDir" || exit

@@ -19,5 +19,5 @@ Int and Ext SD card are considered.
 ## How to
 1. power on your device
 2. Set the latest download link in `garlicos-updater.cfg`
-3. connect your device on the computer
+3. connect your device on the computer via USB
 4. Run `garlicos-updater.sh`

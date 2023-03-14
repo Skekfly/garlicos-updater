@@ -11,11 +11,11 @@ this project is used for updating Anbernic [RG35XX](https://anbernic.com/fr/prod
 | Variable             | Description                                                                                                    |
 |----------------------|----------------------------------------------------------------------------------------------------------------|
 | garlicOsDownloadPath | latest download link ([here](https://www.patreon.com/posts/76561333), named `RG35XX-CopyPasteOnTopOfStock.7z`) |
-| adbDeviceId          | adb device id                                                                                                  |
-| extSaveDir           | local dir where to save `saves` from ext                                                                       |
+| adbDeviceId          | adb device id (`adb devices`)                                                                                                 |
+| extSaveDir           | local dir where to save `saves` from ext (exemple : `/home/Skekfly/saves`)                                                                      |
 
 ## How to
 1. power on your device
 2. Set the latest download link in `garlicos-updater.cfg`
 3. connect your device on the computer
-4. Launch `garlicos-updater.sh`
+4. Run `garlicos-updater.sh`

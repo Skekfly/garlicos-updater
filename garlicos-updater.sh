@@ -4,6 +4,7 @@ echo "# Start"
 
 source ./garlicos-updater.cfg
 workingDir=/tmp/garlicOS/
+sdCardContent=$(adb shell ls /mnt/SDCARD | wc -l)
 
 mkdir -p "$workingDir" || exit
 cd "$workingDir" || exit
@@ -18,17 +19,25 @@ adb -s "$adbDeviceId" shell cp -Rv misc/* /misc/ || exit
 echo "# Updating cfw"
 adb -s "$adbDeviceId" push roms/CFW /mnt/mmc/ || exit
 
-echo "# Updating roms (int)"
+echo "# Updating roms"
 adb -s "$adbDeviceId" push roms/Roms/* /mnt/mmc/ || exit
-echo "# Updating roms (ext)"
-adb -s "$adbDeviceId" push roms/Roms/* /mnt/SDCARD/ || exit
+if [ "$sdCardContent" -gt 1 ]; then
+  adb -s "$adbDeviceId" push roms/Roms/* /mnt/SDCARD/ || exit
+fi
 
-echo "# Updating bios (int)"
+echo "# Updating bios"
 adb -s "$adbDeviceId" push roms/BIOS /mnt/mmc/ || exit
-echo "# Updating bios (ext)"
-adb -s "$adbDeviceId" push roms/BIOS /mnt/SDCARD/ || exit
+if [ "$sdCardContent" -gt 1 ]; then
+  adb -s "$adbDeviceId" push roms/BIOS /mnt/SDCARD/ || exit
+fi
 
-echo "# Saving saves (int)"
-adb -s "$adbDeviceId" pull /mnt/SDCARD/Saves "$extSaveDir" || exit
+if [[ -v saveDir ]]; then
+  echo "# Saving saves"
+  if [ "$sdCardContent" -gt 1 ]; then
+    adb -s "$adbDeviceId" pull /mnt/SDCARD/Saves "$saveDir" || exit
+  else
+    adb -s "$adbDeviceId" push roms/Roms/* /mnt/mmc/ || exit
+  fi
+fi
 
 echo "# End"

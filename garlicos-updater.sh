@@ -36,7 +36,7 @@ if [[ -v saveDir ]]; then
   if [ "$sdCardContent" -gt 1 ]; then
     adb -s "$adbDeviceId" pull /mnt/SDCARD/Saves "$saveDir" || exit
   else
-    adb -s "$adbDeviceId" push roms/Roms/* /mnt/mmc/ || exit
+    adb -s "$adbDeviceId" pull /mnt/mmc/Saves "$saveDir" || exit
   fi
 fi
 

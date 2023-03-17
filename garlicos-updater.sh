@@ -17,18 +17,18 @@ echo "# Updating misc"
 adb -s "$adbDeviceId" shell cp -Rv misc/* /misc/ || exit
 
 echo "# Updating cfw"
-adb -s "$adbDeviceId" push roms/CFW /mnt/mmc/ || exit
+adb -s "$adbDeviceId" push --sync roms/CFW /mnt/mmc/ || exit
 
 echo "# Updating roms"
-adb -s "$adbDeviceId" push roms/Roms/* /mnt/mmc/ || exit
+adb -s "$adbDeviceId" push --sync roms/Roms/* /mnt/mmc/ || exit
 if [ "$sdCardContent" -gt 1 ]; then
-  adb -s "$adbDeviceId" push roms/Roms/* /mnt/SDCARD/ || exit
+  adb -s "$adbDeviceId" push --sync roms/Roms/* /mnt/SDCARD/ || exit
 fi
 
 echo "# Updating bios"
-adb -s "$adbDeviceId" push roms/BIOS /mnt/mmc/ || exit
+adb -s "$adbDeviceId" push --sync roms/BIOS /mnt/mmc/ || exit
 if [ "$sdCardContent" -gt 1 ]; then
-  adb -s "$adbDeviceId" push roms/BIOS /mnt/SDCARD/ || exit
+  adb -s "$adbDeviceId" push --sync roms/BIOS /mnt/SDCARD/ || exit
 fi
 
 if [[ -v saveDir ]]; then

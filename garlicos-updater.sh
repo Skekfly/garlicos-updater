@@ -3,6 +3,8 @@
 echo "# Start"
 
 source ./garlicos-updater.cfg
+#source ./utils.sh
+
 workingDir=/tmp/garlicOS/
 sdCardContent=$(adb shell ls /mnt/SDCARD | wc -l)
 

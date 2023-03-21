@@ -14,10 +14,14 @@ wget -O garlicOS.7z "$garlicOsDownloadPath" || exit
 7z x garlicOS.7z || exit
 
 echo "# Updating misc"
+mount -o rw,remount /misc
 adb -s "$adbDeviceId" shell cp -Rv misc/* /misc/ || exit
 
 echo "# Updating cfw"
+adb -s "$adbDeviceId" shell cp -v /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/current_retroarch.cfg || exit
 adb -s "$adbDeviceId" push --sync roms/CFW /mnt/mmc/ || exit
+adb -s "$adbDeviceId" shell cp -v /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg.new || exit
+adb -s "$adbDeviceId" shell mv /mnt/mmc/CFW/retroarch/.retroarch/current_retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg || exit
 
 echo "# Updating roms"
 adb -s "$adbDeviceId" push --sync roms/Roms/* /mnt/mmc/ || exit

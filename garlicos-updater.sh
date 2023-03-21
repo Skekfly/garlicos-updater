@@ -13,10 +13,6 @@ echo "# Downloading update package"
 wget -O garlicOS.7z "$garlicOsDownloadPath" || exit
 7z x garlicOS.7z || exit
 
-echo "# Updating misc"
-mount -o rw,remount /misc
-adb -s "$adbDeviceId" shell cp -Rv misc/* /misc/ || exit
-
 echo "# Updating cfw"
 adb -s "$adbDeviceId" shell cp -v /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/current_retroarch.cfg || exit
 adb -s "$adbDeviceId" push --sync roms/CFW /mnt/mmc/ || exit
@@ -38,10 +34,17 @@ fi
 if [[ -v saveDir ]]; then
   echo "# Saving saves"
   if [ "$sdCardContent" -gt 1 ]; then
-    adb -s "$adbDeviceId" pull /mnt/SDCARD/Saves "$saveDir" || exit
+    adb -s "$adbDeviceId" pull --sync /mnt/SDCARD/Saves "$saveDir" || exit
   else
-    adb -s "$adbDeviceId" pull /mnt/mmc/Saves "$saveDir" || exit
+    adb -s "$adbDeviceId" pull --sync -a /mnt/mmc/Saves "$saveDir" || exit
   fi
 fi
 
+echo "# Updating misc"
+mount -o rw,remount /misc
+adb -s "$adbDeviceId" shell cp -Rv misc/* /misc/ || exit
+
 echo "# End"
+
+
+adb reboot

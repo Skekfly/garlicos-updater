@@ -10,8 +10,9 @@ mkdir -p "$workingDir" || exit
 cd "$workingDir" || exit
 
 echo "# Downloading update package"
-wget -O garlicOS.7z "$garlicOsDownloadPath" || exit
-7z x garlicOS.7z || exit
+wget -O garlicOS.7z.001 "$garlicOsDownloadPath_001" || exit
+wget -O garlicOS.7z.002 "$garlicOsDownloadPath_002" || exit
+7z x garlicOS.7z.001 || exit
 
 echo "# Updating misc"
 adb shell mount -o rw,remount /misc

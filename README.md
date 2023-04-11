@@ -26,3 +26,9 @@ Int and Ext SD card are considered.
 2. Set the latest download links (001 & 002) in `garlicos-updater.cfg`
 3. connect your device on the computer via USB
 4. Run `garlicos-updater.sh`
+
+<br/>
+<br/>
+<br/>
+<br/>
+<a href="https://www.buymeacoffee.com/skekfly" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>

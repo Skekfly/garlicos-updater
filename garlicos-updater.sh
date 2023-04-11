@@ -16,13 +16,34 @@ wget -O garlicOS.7z.002 "$garlicOsDownloadPath_002" || exit
 
 echo "# Updating misc"
 adb shell mount -o rw,remount /misc
+if [ ! "$resetCfg" = true ]; then
+  adb -s "$adbDeviceId" shell cp -v /misc/boot_logo.bmp.gz /misc/current_boot_logo.bmp.gz || exit
+fi
 adb -s "$adbDeviceId" push --sync misc/* /misc/ || exit
+if [ ! "$resetCfg" = true ]; then
+  adb -s "$adbDeviceId" shell rm -r /misc/boot_logo.bmp.gz.new || exit
+  adb -s "$adbDeviceId" shell mv /misc/boot_logo.bmp.gz /misc/boot_logo.bmp.gz.new || exit
+  adb -s "$adbDeviceId" shell mv /misc/current_boot_logo.bmp.gz /misc/boot_logo.bmp.gz || exit
+fi
 
 echo "# Updating cfw"
-adb -s "$adbDeviceId" shell cp -v /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/current_retroarch.cfg || exit
+if [ ! "$resetCfg" = true ]; then
+  adb -s "$adbDeviceId" shell cp -v /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/current_retroarch.cfg || exit
+  adb -s "$adbDeviceId" shell cp -rv /mnt/mmc/CFW/retroarch/.retroarch/assets /mnt/mmc/CFW/retroarch/.retroarch/current_assets || exit
+  adb -s "$adbDeviceId" shell cp -rv /mnt/mmc/CFW/skin /mnt/mmc/CFW/current_skin || exit
+fi
 adb -s "$adbDeviceId" push --sync roms/CFW /mnt/mmc/ || exit
-adb -s "$adbDeviceId" shell cp -v /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg.new || exit
-adb -s "$adbDeviceId" shell mv /mnt/mmc/CFW/retroarch/.retroarch/current_retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg || exit
+if [ ! "$resetCfg" = true ]; then
+  adb -s "$adbDeviceId" shell rm -r /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg.new || exit
+  adb -s "$adbDeviceId" shell mv /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg.new || exit
+  adb -s "$adbDeviceId" shell mv /mnt/mmc/CFW/retroarch/.retroarch/current_retroarch.cfg /mnt/mmc/CFW/retroarch/.retroarch/retroarch.cfg || exit
+  adb -s "$adbDeviceId" shell rm -r /mnt/mmc/CFW/retroarch/.retroarch/assets.new || exit
+  adb -s "$adbDeviceId" shell mv /mnt/mmc/CFW/retroarch/.retroarch/assets /mnt/mmc/CFW/retroarch/.retroarch/assets.new || exit
+  adb -s "$adbDeviceId" shell mv /mnt/mmc/CFW/retroarch/.retroarch/current_assets /mnt/mmc/CFW/retroarch/.retroarch/assets || exit
+  adb -s "$adbDeviceId" shell rm -r /mnt/mmc/CFW/skin.new || exit
+  adb -s "$adbDeviceId" shell mv /mnt/mmc/CFW/skin /mnt/mmc/CFW/skin.new || exit
+  adb -s "$adbDeviceId" shell mv /mnt/mmc/CFW/current_skin /mnt/mmc/CFW/skin || exit
+fi
 
 echo "# Updating roms"
 adb -s "$adbDeviceId" push --sync roms/Roms/* /mnt/mmc/ || exit
@@ -47,5 +68,4 @@ fi
 
 echo "# End"
 
-
-adb reboot
+adb -s "$adbDeviceId" reboot
